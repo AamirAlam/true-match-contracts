@@ -1,0 +1,46 @@
+{
+  "name": "true-match-contracts",
+  "version": "1.0.0",
+  "description": "TrueMatch Protocol Smart Contracts",
+  "scripts": {
+    "deploy-local": "forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL --broadcast -vvvv",
+    "deploy-testnet": "source .env && forge script script/Deploy.s.sol:Deploy --rpc-url https://evmrpc-testnet.0g.ai --private-key $PRIVATE_KEY --evm-version cancun --broadcast -vvvv",
+    "simulate-testnet": "source .env && forge script script/Deploy.s.sol:Deploy --rpc-url $RPC_URL -vvvv",
+    "approve-token": "source .env && cast send $TOKEN 'approve(address,uint256)' $PROTOCOL $AMOUNT --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "stake": "source .env && cast send $PROTOCOL 'stake(uint256)' $AMOUNT --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "request-unstake": "source .env && cast send $PROTOCOL 'requestUnstake()' --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "unstake": "source .env && cast send $PROTOCOL 'unstake(uint256)' $AMOUNT --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "buy-credits": "source .env && cast send $PROTOCOL 'buySwipeCredits(uint256)' $QTY --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "buy-superlikes": "source .env && cast send $PROTOCOL 'buySuperlikes(uint256)' $QTY --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "buy-boosts": "source .env && cast send $PROTOCOL 'buyBoosts(uint256)' $QTY --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "spend-swipe": "source .env && cast send $PROTOCOL 'spendSwipe()' --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "spend-superlike": "source .env && cast send $PROTOCOL 'spendSuperlike()' --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "spend-boost": "source .env && cast send $PROTOCOL 'spendBoost()' --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "report-user": "source .env && cast send $PROTOCOL 'reportUser(address)' $ADDRESS --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "link-referral": "source .env && cast send $PROTOCOL 'linkReferral(address)' $ADDRESS --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "claim-referral": "source .env && cast send $PROTOCOL 'claimReferralReward()' --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "user-view": "source .env && cast call $PROTOCOL 'userView(address)' $ADDRESS --rpc-url $RPC_URL",
+    "has-premium": "source .env && cast call $PROTOCOL 'hasPremium(address)' $ADDRESS --rpc-url $RPC_URL",
+    "set-treasury": "source .env && cast send $PROTOCOL 'setTreasury(address)' $ADDRESS --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "set-params": "source .env && cast send $PROTOCOL 'setParams(uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256)' $MIN_STAKE $SLASH $THRESH $CREDIT $SUPERLIKE $BOOST $REF_REWARD $COOLDOWN --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "set-paused": "source .env && cast send $PROTOCOL 'setPaused(bool)' $PAUSED --rpc-url $RPC_URL --private-key $PRIVATE_KEY",
+    "update-reputation": "source .env && cast send $PROTOCOL 'updateReputation(address,int256)' $ADDRESS $DELTA --rpc-url $RPC_URL --private-key $PRIVATE_KEY"
+  },
+  "devDependencies": {},
+  "dependencies": {},
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "solidity",
+    "forge",
+    "smart-contracts",
+    "ethereum"
+  ],
+  "author": "",
+  "license": "MIT"
+}
